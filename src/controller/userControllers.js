@@ -4,7 +4,7 @@ module.exports = {
 
     get: async (req,res) => {
         try{
-            res.send(req.user)
+            res.status(200).send(req.user)
         }
         catch(e){
             res.status(500).send(e)
@@ -35,7 +35,7 @@ module.exports = {
         
         try{
            await req.user.remove()
-            res.send(req.user).status(200)
+            res.status(200).send(req.user)
         }catch(e){
             res.send(e)
         }

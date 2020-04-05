@@ -81,11 +81,13 @@ module.exports = {
     delete: async (req,res) => {
 
         try{
-             let data = await Task.findOne({_id: req.params.id, owner: req.user._id})
-             await data.remove()
+             let data = await Task.findOneAndDelete({_id: req.params.id, owner: req.user._id})
+             if( !data ){
+                 res.status(404).send("not found")
+             }
              res.status(200).send(data)
         }catch(e){
-            res.status(401).send("cant delelte")
+            res.status(500)
         }
     }
 
