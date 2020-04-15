@@ -5,7 +5,6 @@ const taskControllers = require('../controller/taskController')
 
 
 router.get('',auth.auth, taskControllers.get)
-
 router.post('',auth.auth, taskControllers.post)
 
 router.patch('/:id',auth.auth,taskControllers.patch)
